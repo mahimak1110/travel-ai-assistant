@@ -1,0 +1,8 @@
+com/travel/TravelAiAssistantApplication.class
+com/travel/controller/HealthController.class
+com/travel/service/ChatService.class
+com/travel/dto/ChatResponse.class
+com/travel/config/AIConfig.class
+com/travel/dto/ChatRequest.class
+com/travel/controller/ChatController.class
+com/travel/service/Assistant.class
