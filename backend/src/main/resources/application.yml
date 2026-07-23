@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: travel-ai-assistant
+  devtools:
+    restart:
+      enabled: true
+
+server:
+  port: 8080
+
+langchain4j:
+  ollama:
+    chat-model:
+      model-name: llama2
+      base-url: http://localhost:11434
