@@ -30,7 +30,7 @@ public class ChatController {
             @RequestBody ChatRequest request
     ){
         log.info("Received chat request: {}", request.getMessage());
-        String response = chatService.chat(request.getMessage());
+        String response = chatService.chat(request.getContent());
 
         log.info("Received chat response Successfully");
         return new ChatResponse(response);

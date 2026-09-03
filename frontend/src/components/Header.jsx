@@ -26,7 +26,7 @@ export default function Header({ onNewChat, onToggleSidebar }) {
 
     return (
         <header className="topbar">
-            <button className="icon-button menu-button" onClick={onToggleSidebar} aria-label="Open conversations">
+            <button className="icon-button menu-button" onClick={onToggleSidebar} aria-label="Open conversations" title="Open conversations">
                 <Icon name="menu" />
             </button>
             <div className="brand-mark"><Icon name="compass" size={21} /></div>
@@ -41,7 +41,8 @@ export default function Header({ onNewChat, onToggleSidebar }) {
                 <button
                     className="icon-button"
                     onClick={toggleTheme}
-                    aria-label="Toggle theme"
+                    aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} theme`}
+                    title={`Switch to ${isDarkMode ? 'light' : 'dark'} theme`}
                 >
                     <Icon name={isDarkMode ? "sun" : "moon"} size={18} />
                 </button>
