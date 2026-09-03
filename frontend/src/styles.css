@@ -5,6 +5,7 @@
 body { margin: 0; min-width: 320px; }
 button, textarea { font: inherit; }
 button { cursor: pointer; }
+button:focus-visible, textarea:focus-visible { outline: 3px solid rgba(57, 160, 151, .35); outline-offset: 2px; }
 .app-shell { height: 100vh; display: flex; flex-direction: column; overflow: hidden; background: #fbfcfd; }
 .topbar { height: 76px; flex: 0 0 76px; display: flex; align-items: center; gap: 12px; padding: 0 34px; border-bottom: 1px solid #e7ebef; background: rgba(255,255,255,.86); }
 .brand-mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 12px; color: #fff; background: #146b68; box-shadow: 0 5px 12px rgba(20,107,104,.18); }
@@ -14,28 +15,31 @@ button { cursor: pointer; }
 .topbar-actions { display: flex; align-items: center; gap: 16px; margin-left: auto; }
 .connection-status { display: flex; align-items: center; gap: 8px; color: #647180; font-size: 12px; }
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #3baf78; box-shadow: 0 0 0 3px #e4f5ec; }
-.icon-button { display: grid; place-items: center; padding: 6px; border: 0; background: beige; color: inherit; }
+.icon-button { display: grid; place-items: center; min-width: 40px; min-height: 40px; padding: 6px; border: 0; border-radius: 9px; background: transparent; color: inherit; }
+.icon-button:hover { background: #eef5f4; color: #146b68; }
 .new-chat-top { display: flex; align-items: center; gap: 7px; padding: 10px 15px; border: 1px solid #dce5e6; border-radius: 9px; color: #146b68; background: #fff; font-size: 13px; font-weight: 600; }
 .new-chat-top:hover, .new-chat-button:hover { border-color: #8ec9c4; background: #f2faf9; }
 .menu-button { display: none; }
 .app-body { display: flex; min-height: 0; flex: 1; }
 .sidebar { z-index: 3; display: flex; flex-direction: column; width: 274px; flex: 0 0 274px; padding: 28px 17px 18px; border-right: 1px solid #e8ecef; background: #fff; }
 .sidebar-heading { padding: 0 11px 18px; color: #9aa4af; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.mobile-close { display: none; float: right; border: 0; background: none; color: #77828c; font-size: 24px; }
+.mobile-close { display: none; float: right; min-width: 40px; min-height: 40px; border: 0; border-radius: 9px; background: none; color: #77828c; font-size: 24px; }
 .new-chat-button { display: flex; align-items: center; gap: 10px; width: 100%; padding: 12px; border: 1px solid #dce5e6; border-radius: 9px; color: #146b68; background: #fff; font-size: 13px; font-weight: 600; text-align: left; }
 kbd { margin-left: auto; padding: 2px 5px; border: 1px solid #e1e6e8; border-radius: 4px; color: #a7b0b8; background: #f8fafb; font-size: 10px; }
 .conversation-label { margin: 29px 11px 10px; color: #9aa4af; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .conversation-list { display: flex; flex-direction: column; gap: 3px; }
-.conversation-item { display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 9px; border: 0; border-radius: 8px; color: #687580; background: transparent; text-align: left; }
+.conversation-item { display: flex; align-items: stretch; gap: 0; width: 100%; border-radius: 8px; color: #687580; background: transparent; text-align: left; }
 .conversation-item:hover, .conversation-item.active { color: #146b68; background: #f0f8f7; }
+.conversation-select { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; padding: 10px 5px 10px 9px; border: 0; border-radius: 8px; color: inherit; background: transparent; text-align: left; }
+.conversation-select:focus-visible { position: relative; z-index: 1; }
 .conversation-icon { display: grid; place-items: center; color: #a3adb6; }
 .active .conversation-icon { color: #146b68; }
 .conversation-details { display: flex; flex: 1; flex-direction: column; gap: 3px; min-width: 0; }
 .conversation-details strong { overflow: hidden; color: #44515e; font-size: 12px; font-weight: 500; text-overflow: ellipsis; white-space: nowrap; }
 .conversation-item.active strong { color: #146b68; font-weight: 600; }
 .conversation-details small { color: #a6afb8; font-size: 10px; }
-.delete-conversation { opacity: 0; color: #a4afb6; }
-.conversation-item:hover .delete-conversation { opacity: 1; }
+.delete-conversation { display: grid; place-items: center; min-width: 40px; min-height: 40px; padding: 0; border: 0; border-radius: 8px; color: #a4afb6; background: transparent; opacity: 0; }
+.delete-conversation:hover { color: #bd5d55; background: #fff1ef; }.conversation-item:hover .delete-conversation, .conversation-item:focus-within .delete-conversation { opacity: 1; }
 .sidebar-footer { display: flex; align-items: center; gap: 10px; margin-top: auto; padding: 15px 8px 0; border-top: 1px solid #edf0f2; }
 .avatar, .user-avatar { display: grid; place-items: center; width: 28px; height: 28px; flex: 0 0 28px; border-radius: 50%; color: #fff; background: #174e5a; font-size: 9px; font-weight: 700; }
 .sidebar-footer div { display: flex; flex: 1; flex-direction: column; gap: 2px; }
@@ -121,6 +125,19 @@ html.dark body {
 html.dark .app-shell {
   background: var(--shell-bg);
 }
+html.dark .chat-area { background: var(--shell-bg); }
+html.dark .icon-button { color: #aebdce; }
+html.dark .icon-button:hover { background: #1e293b; color: #8bd0c8; }
+html.dark .brand-copy span, html.dark .connection-status, html.dark .conversation-label, html.dark .sidebar-heading { color: #94a3b8; }
+html.dark .brand-copy strong, html.dark .conversation-details strong, html.dark .sidebar-footer strong { color: #e2e8f0; }
+html.dark .conversation-details small, html.dark .sidebar-footer small { color: #94a3b8; }
+html.dark .new-chat-button, html.dark .new-chat-top { color: #9ae0d8; background: #17263a; border-color: #334155; }
+html.dark .conversation-item:hover, html.dark .conversation-item.active { background: #163b3c; }
+html.dark .suggestion-card { color: #dbe5ef; }
+html.dark .welcome-subtitle, html.dark .composer-note { color: #94a3b8; }
+html.dark .composer textarea { color: #e2e8f0; }
+html.dark .assistant-bubble { color: #dbe5ef; }
+html.dark .delete-conversation:hover { background: #422a2a; }
 
 html.dark .topbar {
   background: var(--topbar-bg);
