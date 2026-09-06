@@ -2,7 +2,9 @@ import { API_BASE_URL } from '../config/environment';
 
 export async function sendChatMessage({ message, conversationId }) {
   const payload = { message };
-  if (conversationId) payload.conversationId = conversationId;
+  if (conversationId !== null && conversationId !== undefined) {
+    payload.conversationId = conversationId;
+  }
 
   const response = await fetch(`${API_BASE_URL}/api/chat`, {
     method: 'POST',

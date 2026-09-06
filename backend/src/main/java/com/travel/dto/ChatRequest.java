@@ -5,6 +5,7 @@ import java.util.List;
 public class ChatRequest {
 
     private String message;
+    private Long conversationId;
     private List<Message> messages;
 
     public ChatRequest() {
@@ -20,6 +21,14 @@ public class ChatRequest {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Long getConversationId() {
+        return conversationId;
+    }
+
+    public void setConversationId(Long conversationId) {
+        this.conversationId = conversationId;
     }
 
     public List<Message> getMessages() {

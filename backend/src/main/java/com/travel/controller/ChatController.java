@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/chat")
 public class ChatController {
-    @Autowired
     private final ChatService chatService;
 
     public ChatController(ChatService chatService) {
@@ -29,11 +28,18 @@ public class ChatController {
     public ChatResponse chat(
             @RequestBody ChatRequest request
     ){
-        log.info("Received chat request: {}", request.getMessage());
-        String response = chatService.chat(request.getContent());
+        log.info("Received chat request. conversationId={}", request.getConversationId());
+        ChatService.ChatResult result = chatService.chat(
+                request.getContent(),
+                request.getConversationId()
+        );
 
         log.info("Received chat response Successfully");
-        return new ChatResponse(response);
+        return new ChatResponse(
+                result.response(),
+                result.conversationId(),
+                result.messageId()
+        );
 
     }
 
