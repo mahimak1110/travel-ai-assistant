@@ -1,8 +1,14 @@
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/entity/Conversation.java
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/config/AIConfig.java
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/entity/Message.java
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/TravelAiAssistantApplication.java
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/dto/ChatResponse.java
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/repository/ConversationRepository.java
 /Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/service/ChatService.java
 /Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/dto/ChatRequest.java
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/controller/HomeController.java
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/config/OpenApiConfig.java
 /Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/service/Assistant.java
 /Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/controller/ChatController.java
-/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/config/AIConfig.java
-/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/TravelAiAssistantApplication.java
+/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/repository/MessageRepository.java
 /Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/controller/HealthController.java
-/Users/mahi/Coding/AI-Project /travel-ai-assistant/backend/src/main/java/com/travel/dto/ChatResponse.java
