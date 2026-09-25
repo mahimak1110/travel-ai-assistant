@@ -9,8 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.stream.Collectors;
-
 @Service
 public class ChatService {
 
@@ -18,13 +16,16 @@ public class ChatService {
             LoggerFactory.getLogger(ChatService.class);
 
     private final Assistant assistant;
+    private final ContextManager contextManager;
     private final ConversationRepository conversationRepository;
     private final MessageRepository messageRepository;
 
     public ChatService(Assistant assistant,
+                       ContextManager contextManager,
                        ConversationRepository conversationRepository,
                        MessageRepository messageRepository) {
         this.assistant = assistant;
+        this.contextManager = contextManager;
         this.conversationRepository = conversationRepository;
         this.messageRepository = messageRepository;
     }
@@ -53,11 +54,10 @@ public class ChatService {
                         .build()
         );
 
-        String conversationContext = messageRepository
-                .findByConversationIdOrderByTimestampAsc(conversation.getId())
-                .stream()
-                .map(item -> item.getSender() + ": " + item.getContent())
-                .collect(Collectors.joining("\n"));
+        var history = messageRepository
+                .findByConversationIdOrderByTimestampAsc(conversation.getId());
+        var context = contextManager.buildContext(history);
+        String conversationContext = contextManager.createPrompt(context);
 
         String response = assistant.chat(conversationContext);
 
